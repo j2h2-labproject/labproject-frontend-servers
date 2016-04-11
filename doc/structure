@@ -1,0 +1,6 @@
+transports - Communications functions between frontend and vm servers
+frontends - Communicating with users
+managers - Manages operations on different objects, such as VMs and switches from the front-end perspective. Communicates with the vm-server and the database
+controllers - Interfaces with front-ends and correlates the data passed to and from managers. This is where logic such as permissions is processed
+
+
