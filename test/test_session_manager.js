@@ -28,7 +28,6 @@ describe('session_manager:', function(){
 
 		it('create a session', function(done){
 
-
 			session_manager.new_password_session("test", "test2", function(l_error, result) {
 				(l_error === null).should.equal(true);
 				session_id = result.get_session_id();
@@ -37,6 +36,20 @@ describe('session_manager:', function(){
 				// 	(d_error === null).should.equal(true);
 				// 	done();
 				// });
+
+			});
+
+		});
+
+		it('create another session', function(done){
+
+
+			session_manager.new_password_session("test", "test2", function(l_error, result) {
+				(l_error === null).should.equal(true);
+				result.delete(function(d_error, result) {
+					(d_error === null).should.equal(true);
+					done();
+				});
 
 			});
 
@@ -64,10 +77,23 @@ describe('session_manager:', function(){
 
 	});
 
+
 	describe('get session', function(done) {
 
+		it('Gets a session', function(done){
+
+			session_manager.get_password_session(session_id, function(l_error, result) {
+				(l_error === null).should.equal(true);
+				result.get_session_id().should.equal(session_id);
+				result.get_user().should.equal("test");
+				done();
+
+			});
+
+		});
 
 	});
+
 
 	describe('delete session', function(done) {
 

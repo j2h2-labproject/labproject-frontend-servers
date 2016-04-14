@@ -1,0 +1,13 @@
+use labproject
+db.createCollection('test');
+db.test.createIndex({"id":1},{unique: true});
+db.createCollection('sessions');
+db.sessions.createIndex({"session_id":1},{unique: true});
+db.createCollection('users');
+db.users.createIndex({"username":1},{unique: true});
+db.createCollection('groups');
+db.users.createIndex({"groupname":1},{unique: true});
+db.createCollection('labs');
+db.users.createIndex({"lab_id":1},{unique: true});
+db.createCollection('permissions');
+db.users.createIndex({"username":1},{unique: true});
