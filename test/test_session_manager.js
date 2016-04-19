@@ -67,8 +67,9 @@ describe('session_manager:', function(){
 
 		it('fails to create a session for an invalid password', function(done){
 
-			session_manager.new_password_session("test", "test", function(l_error, result) {
+			session_manager.new_password_session("test", "blaa", function(l_error, result) {
 				(l_error === null).should.equal(false);
+				l_error.message.should.equal("Invalid username/password");
 				done();
 			});
 
