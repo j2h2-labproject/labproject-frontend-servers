@@ -11,3 +11,7 @@ db.createCollection('permissions');
 db.permissions.createIndex({"username":1},{unique: true});
 db.createCollection('groups');
 db.groups.createIndex({"groupname":1},{unique: true});
+db.createCollection('registered_devices');
+db.registered_devices.createIndex({"uuid":1},{unique: true});
+db.createCollection('allocated_devices');
+db.allocated_devices.createIndex({"uuid":1},{unique: true});

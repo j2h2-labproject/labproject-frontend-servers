@@ -102,7 +102,6 @@ describe('vm_manager:', function(){
   				(error === null).should.be.true;
   				(result === null).should.be.false;
           result.state.define(function( error, result) {
-            console.log("ERROR", error);
             done();
           });
 
@@ -112,6 +111,89 @@ describe('vm_manager:', function(){
 			});
 
 		});
+
+    describe('start the virtual machine', function(){
+
+        it('should successfully start the vm', function(done){
+          this.timeout(15000);
+
+          vm_manager.get_vm(vm_uuid, function(error, result) {
+            (error === null).should.be.true;
+            (result === null).should.be.false;
+            result.state.start(function( error, result) {
+              console.log("ERROR", error);
+              result.should.equal(true);
+              setTimeout(function(){
+                done();
+              }, 7000);
+            });
+
+
+          });
+
+        });
+
+        it('should fail to start the same vm', function(done){
+
+          vm_manager.get_vm(vm_uuid, function(error, result) {
+            (error === null).should.be.true;
+            (result === null).should.be.false;
+            result.state.start(function( error, result) {
+              console.log("ERROR", error);
+              (result === null).should.equal(true);
+              (error === null).should.equal(false);
+              error.message.should.equal("Device is already allocated");
+              done();
+            });
+
+
+          });
+
+        });
+
+      });
+
+    describe('stop the virtual machine', function(){
+
+        it('should successfully stop the vm', function(done){
+          this.timeout(7000);
+
+          vm_manager.get_vm(vm_uuid, function(error, result) {
+            (error === null).should.be.true;
+            (result === null).should.be.false;
+            result.state.stop(function( error, result) {
+              result.should.equal(true);
+              setTimeout(function(){
+                done();
+              }, 3000);
+            });
+
+
+          });
+
+        });
+
+
+      });
+
+
+    describe('undefine the virtual machine', function(){
+
+  			it('undefine', function(done){
+
+          vm_manager.get_vm(vm_uuid, function(error, result) {
+    				(error === null).should.be.true;
+    				(result === null).should.be.false;
+            result.state.undefine(function( error, result) {
+              result.should.equal(true);
+              done();
+            });
+
+    			});
+
+  			});
+
+  		});
 
 	// describe('remove group memberships', function(){
 	// 	it('Remove users from membership', function(done){

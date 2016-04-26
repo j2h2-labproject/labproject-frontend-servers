@@ -97,6 +97,26 @@ describe('lab_manager:', function(){
 
 	});
 
+	describe('list labs', function(){
+
+		it('get a list of labs', function(done){
+
+			lab_manager.list_available_labs("bob", [], function(error, results) {
+				(error === null).should.be.true;
+				(results.length > 0).should.equal(true);
+				var found = false;
+				for (var i = 0; i < results.length; i++ ) {
+					if (results[i].lab_id == lab_id) {
+						found = true;
+					}
+				}
+				found.should.equal(true);
+				done();
+			});
+
+		});
+
+	});
 
 
 	describe('delete labs', function(){
