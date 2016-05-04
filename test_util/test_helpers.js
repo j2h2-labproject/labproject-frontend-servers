@@ -48,8 +48,8 @@ var perm_list = [
 function generate_users(callback) {
   var user_list = [
     {username: "superuser", password: "test", superuser: true, permissions: []},
-    {username: "regular1", password: "test", superuser: false, permissions: []},
-    {username: "regular2", password: "test", superuser: false, permissions: []},
+    {username: "regular1", password: "test", superuser: false, permissions: ["use_vms"]},
+    {username: "regular2", password: "test", superuser: false, permissions: ["create_labs", "create_vms"]},
     {username: "admin1", password: "test", superuser: false, permissions: []},
     {username: "admin2", password: "test", superuser: false, permissions: ["admin_users", "admin_groups", "admin_servers", "admin_vms"]}
   ];

@@ -95,6 +95,36 @@ describe('session_manager:', function(){
 
 	});
 
+	describe('get_session_data', function(done) {
+
+		it('Gets and sets session_data', function(done){
+
+			session_manager.get_password_session(session_id, function(l_error, result) {
+				(l_error === null).should.equal(true);
+				(null === result.get_session_data('test')).should.equal(true);
+				result.set_session_data('test', 'data');
+				result.get_session_data('test').should.equal('data');
+				result.save(function(s_error, result) {
+					(s_error === null).should.equal(true);
+					done();
+				});
+			});
+
+		});
+
+		it('Gets session_data from a save', function(done){
+
+			session_manager.get_password_session(session_id, function(l_error, result) {
+				(l_error === null).should.equal(true);
+				(null === result.get_session_data('test')).should.equal(false);
+				result.get_session_data('test').should.equal('data');
+				done();
+			});
+
+		});
+
+	});
+
 
 	describe('delete session', function(done) {
 

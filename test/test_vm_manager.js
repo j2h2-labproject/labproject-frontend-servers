@@ -94,6 +94,10 @@ describe('vm_manager:', function(){
 
 	});
 
+
+
+
+
 	describe('define the virtual machine', function(){
 
 			it('define', function(done){
@@ -110,48 +114,99 @@ describe('vm_manager:', function(){
 
 			});
 
-		});
+	});
 
-    describe('start the virtual machine', function(){
+  describe('fail to start', function(){
 
-        it('should successfully start the vm', function(done){
-          this.timeout(15000);
+    it('should not successfully start the vm that is not allocated', function(done){
 
-          vm_manager.get_vm(vm_uuid, function(error, result) {
-            (error === null).should.be.true;
-            (result === null).should.be.false;
-            result.state.start(function( error, result) {
-              console.log("ERROR", error);
-              result.should.equal(true);
-              setTimeout(function(){
-                done();
-              }, 7000);
-            });
+      vm_manager.get_vm(vm_uuid, function(error, result) {
+        (error === null).should.be.true;
+        (result === null).should.be.false;
+        result.state.start(function( error, result) {
+          (error === null).should.equal(false);
+          error.message.should.equal("Cannot start a VM that has not been allocated");
+          done();
+        });
+      });
 
+    });
 
-          });
+  });
 
+  describe('allocate/deallocate the virtual machine', function(){
+
+    it('should allocate the virtual machine', function(done){
+
+      vm_manager.get_vm(vm_uuid, function(error, result) {
+        (error === null).should.be.true;
+        (result === null).should.be.false;
+        result.state.allocate(function( error, result) {
+          (error === null).should.equal(true);
+          result.should.equal(true);
+          done();
+        });
+      });
+
+    });
+
+    it('should fail to reallocate the virtual machine', function(done){
+
+      vm_manager.get_vm(vm_uuid, function(error, result) {
+        (error === null).should.be.true;
+        (result === null).should.be.false;
+        result.state.allocate(function( error, result) {
+          (error === null).should.equal(false);
+          (result === null).should.equal(true);
+          done();
+        });
+      });
+
+    });
+
+  });
+
+  describe('start the virtual machine', function(){
+
+    it('should successfully start the vm', function(done){
+      this.timeout(15000);
+
+      vm_manager.get_vm(vm_uuid, function(error, result) {
+        (error === null).should.be.true;
+        (result === null).should.be.false;
+        result.state.start(function( error, result) {
+          console.log("ERROR", error);
+          result.should.equal(true);
+          setTimeout(function(){
+            done();
+          }, 7000);
         });
 
-        it('should fail to start the same vm', function(done){
 
-          vm_manager.get_vm(vm_uuid, function(error, result) {
-            (error === null).should.be.true;
-            (result === null).should.be.false;
-            result.state.start(function( error, result) {
-              console.log("ERROR", error);
-              (result === null).should.equal(true);
-              (error === null).should.equal(false);
-              error.message.should.equal("Device is already allocated");
-              done();
-            });
+      });
+
+    });
 
 
+      it('should fail to start the same vm', function(done){
+
+        vm_manager.get_vm(vm_uuid, function(error, result) {
+          (error === null).should.be.true;
+          (result === null).should.be.false;
+          result.state.start(function( error, result) {
+            console.log("ERROR", error);
+            (result === null).should.equal(true);
+            (error === null).should.equal(false);
+            console.log(error);
+            done();
           });
+
 
         });
 
       });
+
+    });
 
     describe('stop the virtual machine', function(){
 

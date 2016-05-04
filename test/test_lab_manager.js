@@ -58,6 +58,8 @@ describe('lab_manager:', function(){
 				(result === null).should.be.false;
 				result.set_owner("bob");
 				result.get_owner().should.equal('bob');
+				result.add_device("12345678-1234-5678-1234-567812345678");
+				result.device_in_lab("12345678-1234-5678-1234-567812345678").should.equal(true);
 				result.save(function(s_error, result) {
 					(s_error === null).should.be.true;
 					result.should.equal(true);
@@ -74,6 +76,7 @@ describe('lab_manager:', function(){
 				(error === null).should.equal(true);
 				(result === null).should.equal(false);
 				result.get_owner().should.equal('bob');
+				result.device_in_lab("12345678-1234-5678-1234-567812345678").should.equal(true);
 				done();
 			});
 
@@ -91,6 +94,51 @@ describe('lab_manager:', function(){
 				result.set_lab_name("nope");
 				result.get_lab_name().should.equal("test_lab");
 				done();
+			});
+
+		});
+
+	});
+
+	describe('start/stop lab', function(){
+
+		it('starts the lab', function(done){
+
+			lab_manager.get_lab(lab_id, function(error, result) {
+				(error === null).should.equal(true);
+				result.start_lab(function(s_error, status) {
+					(s_error === null).should.equal(true);
+					status.should.equal(true);
+					done();
+				});
+			});
+
+		});
+
+		it('fails to start the same lab', function(done){
+
+			lab_manager.get_lab(lab_id, function(error, result) {
+				(error === null).should.equal(true);
+				result.start_lab(function(s_error, status) {
+					(s_error === null).should.equal(false);
+					s_error.message.should.equal("Lab is already started");
+					done();
+				});
+			});
+
+		});
+
+
+		it('stops the lab', function(done){
+
+			lab_manager.get_lab(lab_id, function(error, result) {
+				(error === null).should.equal(true);
+				result.stop_lab(function(s_error, status) {
+					(s_error === null).should.equal(true);
+					status.should.equal(true);
+					done();
+				});
+
 			});
 
 		});
