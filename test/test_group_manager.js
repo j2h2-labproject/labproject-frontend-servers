@@ -32,9 +32,9 @@ describe('group_manager:', function(){
 
 	});
 
-	describe('get group', function(){
+	describe('get group object', function(){
 
-		it('get group', function(done){
+		it('should get group object', function(done){
 
 			group_manager.get_group('test', function(error, result) {
 				(error === null).should.be.true;
@@ -45,7 +45,7 @@ describe('group_manager:', function(){
 
 		});
 
-		it('get user and save data', function(done){
+		it('should get group object and save data', function(done){
 
 			group_manager.get_group('test', function(error, result) {
 				(error === null).should.be.true;
@@ -66,7 +66,7 @@ describe('group_manager:', function(){
 
 		});
 
-		it('get user with new data', function(done){
+		it('should get group object with new data', function(done){
 
 			group_manager.get_group('test', function(error, result) {
 				(error === null).should.be.true;

@@ -105,7 +105,9 @@ describe('vm_manager:', function(){
         vm_manager.get_vm(vm_uuid, function(error, result) {
   				(error === null).should.be.true;
   				(result === null).should.be.false;
-          result.state.define(function( error, result) {
+          result.state.define(function(error, result) {
+            (error === null).should.be.true;
+            (result === null).should.be.false;
             done();
           });
 

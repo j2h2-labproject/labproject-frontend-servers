@@ -17,3 +17,7 @@ db.createCollection('allocated_devices');
 db.allocated_devices.createIndex({"uuid":1},{unique: true});
 db.createCollection('allocated_labs');
 db.allocated_labs.createIndex({"lab_id":1},{unique: true});
+db.createCollection('interfaces');
+db.interfaces.createIndex({"interface_name":1},{unique: true});
+db.createCollection('states');
+db.states.createIndex({"state_name":1},{unique: true});
