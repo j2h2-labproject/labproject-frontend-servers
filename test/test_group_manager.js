@@ -8,27 +8,21 @@ describe('group_manager:', function(){
 
 	describe('add groups', function(){
 
-		it('create a group', function(done){
-
+		it('should create a group', function(done){
 			group_manager.new_group('test', function(error, result) {
 				(error === null).should.equal(true);
 				(result === null).should.equal(false);
 				done();
 			});
-
 		});
 
-
-		it('fail to create a duplicate group', function(done){
-
+		it('should fail to create a duplicate group', function(done){
 			group_manager.new_group('test', function(error, result) {
 				(error === null).should.equal(false);
 				error.message.should.equal('Group insert failed');
 				done();
 			});
-
 		});
-
 
 	});
 

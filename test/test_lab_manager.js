@@ -49,9 +49,7 @@ describe('lab_manager:', function(){
 
 	describe('get labs', function(){
 
-
-
-		it('get lab', function(done){
+		it('should get lab', function(done){
 
 			lab_manager.get_lab(lab_id, function(error, result) {
 				(error === null).should.equal(true);
@@ -63,7 +61,7 @@ describe('lab_manager:', function(){
 
 		});
 
-		it('get lab and save data', function(done){
+		it('should get lab and save data', function(done){
 
 				lab_manager.get_lab(lab_id, function(error, result) {
 				(error === null).should.equal(true);

@@ -74,6 +74,21 @@ describe('user_manager:', function(){
 
 	});
 
+	describe('list users:', function(){
+
+		it('should list users', function(done){
+
+			user_manager.list_users(function(error, result) {
+				(error === null).should.be.true;
+				(result.length > 1).should.equal(true);
+				result.indexOf('test').should.not.equal(-1);
+				done();
+			});
+
+		});
+
+	});
+
 	describe('delete users', function(){
 
 		it('delete users', function(done){
