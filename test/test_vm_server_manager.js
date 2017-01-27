@@ -1,5 +1,6 @@
 var LABPROJECT_BASE = process.cwd();
 
+var test_helper = require(LABPROJECT_BASE + '/test_util/test_helpers');
 
 var vm_server_manager = require(LABPROJECT_BASE + '/lib/managers/vm_server_manager');
 

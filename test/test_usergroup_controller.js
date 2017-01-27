@@ -2,7 +2,9 @@ var LABPROJECT_BASE = process.cwd();
 var LABPROJECT_LIB = process.cwd() + "/lib";
 
 var usergroup_controller = require(LABPROJECT_BASE + '/lib/controllers/usergroup_controller');
+
 var test_helper = require(LABPROJECT_BASE + '/test_util/test_helpers');
+
 var should = require("should");
 
 var foreach = require(LABPROJECT_LIB + "/common/loop").foreach;
