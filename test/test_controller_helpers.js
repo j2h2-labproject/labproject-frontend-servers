@@ -14,6 +14,7 @@ describe('controller_helpers:', function(){
 
 	before(function(done) {
 		user_manager.new_user("test", "test3", function(error, result) {
+      console.log(error);
 			(error === null).should.equal(true);
       group_manager.new_group("group", function(g_error, group) {
         group.add_member("test");
