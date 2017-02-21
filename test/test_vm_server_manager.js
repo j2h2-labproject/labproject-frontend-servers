@@ -37,6 +37,21 @@ describe('vm_server_manager:', function(){
 		});
 	});
 
+  describe('vm servers maintenance mode: ', function(){
+		it('should create/check for maintenance mode', function(done){
+
+		  vm_server_manager.get_server(server, function(error, server_obj) {
+        (error === null).should.equal(true);
+        server_obj.reboot_maintenance_network(function(error, result) {
+          (error === null).should.equal(true);
+          done();
+        });
+        
+      });
+
+		});
+	});
+
   describe('get vm server info', function(){
 		it('should get vm server status', function(done){
 			vm_server_manager.get_server(server, function(error, server_obj) {

@@ -65,6 +65,8 @@ describe('vm_manager:', function(){
         result.config.get_mem_size().should.equal(512);
 				result.config.set_display('local');
         result.config.get_display().should.equal('local');
+        result.config.add_interface("test0.0");
+        result.config.interface_count().should.equal(1);
         result.set_owner('test');
         result.get_owner().should.equal('test');
 				result.save(function(s_error, result) {

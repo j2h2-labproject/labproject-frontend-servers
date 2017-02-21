@@ -4,13 +4,13 @@ var LABPROJECT_LIB = process.cwd() + "/lib";
 var test_helper = require(LABPROJECT_BASE + '/test_util/test_helpers');
 
 var config = require(LABPROJECT_BASE + "/config");
-var vm_server_controller = require(LABPROJECT_BASE + '/lib/controllers/vm_server_controller');
+var vm_server_controller = require(LABPROJECT_BASE + '/lib/controllers/vm_controller');
 var socket_io_transport = require(LABPROJECT_BASE + "/lib/transports/socket_io_transport");
 var foreach = require(LABPROJECT_LIB + "/common/loop").foreach;
 
 var should = require("should");
 
-describe('vm_server_controller:', function(){
+describe('vm_controller:', function(){
 
   var server = null;
   var sessions = null;
@@ -21,7 +21,7 @@ describe('vm_server_controller:', function(){
   before(function(done) {
     test_helper.generate_environment(function(result) {
       sessions = result;
-      host_item = config.vm_servers.hosts[0];
+      server = config.vm_servers.hosts[0];
       socket_io_transport.connect_clients(test_logger, config.vm_servers.hosts, function(error, vm_server_client) {
         vm_server_controller.initialize(vm_server_client);
         done();
@@ -35,7 +35,7 @@ describe('vm_server_controller:', function(){
     });
 	});
 
-	describe('list vm servers: ', function(){
+	describe('list vms: ', function(){
 
 		it('should allow superuser and users with admin_servers ability to list vm servers', function(done) {
       foreach(expected_success, function(loc, controller, pass_data, next) {
@@ -107,6 +107,7 @@ describe('vm_server_controller:', function(){
 
           vm_server_controller.get_server_info(sessions[username], server, function(error, server_info) {
             (error === null).should.equal(true);
+            console.log(server_info);
             next(null, null);
           });
       }, function(error, status) {

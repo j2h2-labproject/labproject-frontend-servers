@@ -62,13 +62,12 @@ describe('controller_helpers:', function(){
 
 		it('get session data', function(done){
 
-      controller_helpers.get_user_data(session_id, function(error, data) {
+      controller_helpers.get_user_data(session_id, function(error, user, groups, permissions, session) {
         (error === null).should.equal(true);
-        console.log(data);
-        data.user.should.equal("test");
-        data.groups.should.containDeep(['group']);
-        data.permissions.can_use_vms().should.equal(true);
-        data.permissions.can_create_vms().should.equal(false);
+        user.should.equal("test");
+        groups.should.containDeep(['group']);
+        permissions.can_use_vms().should.equal(true);
+        permissions.can_create_vms().should.equal(false);
         done();
       });
 
