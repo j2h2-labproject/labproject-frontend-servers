@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - LabProject</title>
+    include includes/includes.pug
+</head>
+<body>
+    include includes/header.pug
+    <div class="ui grid raised segment">
+        <div class="four wide column">
+            <div class="ui vertical inverted fluid menu">
+                <a class="item">
+                    <i class="user icon"></i>My Profile
+                </a>
+                <a class="item">
+                    <i class="users icon"></i>Groups
+                </a>
+                <a class="item">
+                    <i class="checkmark icon"></i>Permissions
+                </a>
+                <a class="item">
+                    <i class="disk outline icon"></i>My VMs
+                </a>
+                <a class="item">
+                    <i class="block layout icon"></i>Lab Managment
+                </a>
+                <a class="item">
+                    <i class="cubes icon"></i>Server Managment
+                </a>
+            </div>
+        </div>
+        <div class="twelve wide column"> 
+            <div class="ui segments" id="recent-labs">
+                <div class="ui segment blue inverted">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="ui loading secondary segment">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "name": "labproject-frontend-server",
+  "version": "0.0.1",
+  "description": "Frontend server(s) for LabProject",
+  "author": "Jacob Hartman <jacob@j2h2.com>",
+  "contributors": [
+    {}
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": " https://github.com/j2h2-labproject/labproject-frontend-servers.git"
+  },
+  "dependencies": {
+    "better-console": "^1.0.0",
+    "body-parser": "^1.16.1",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "del": "^2.2.2",
+    "express": "^4.14.1",
+    "extend": "^3.0.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-chmod": "^2.0.0",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-clone": "^1.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-copy": "^1.0.0",
+    "gulp-dedupe": "0.0.2",
+    "gulp-flatten": "^0.3.1",
+    "gulp-header": "^1.8.8",
+    "gulp-help": "^1.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-less": "^3.3.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rtlcss": "^1.0.0",
+    "gulp-uglify": "^2.0.1",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "map-stream": "0.0.6",
+    "mongodb": "^2.2.24",
+    "prompt": "^1.0.0",
+    "pug": "^2.0.0-beta11",
+    "require-dot-file": "^0.4.0",
+    "run-sequence": "^1.2.2",
+    "semantic-ui": "^2.2.9",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
+    "vorpal": "^1.11.4",
+    "yamljs": "^0.2.8"
+  },
+  "devDependencies": {
+    "acorn": "^4.0.11",
+    "browserify": "^14.1.0",
+    "gulp": "^3.9.1",
+    "vueify": "^9.4.1"
+  },
+  "license": "GPL-3.0",
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
+  }
+}

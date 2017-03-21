@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - LabProject</title>
+    include includes/includes.pug
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+</head>
+<body>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui grey image header logofont">LabProject</h2>
+            <form class="ui large form" action="/login" method="post">
+                <div class="ui stacked segment">
+                    <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="Username">
+                    </div>
+                    </div>
+                    <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    </div>
+                    <input type="submit" class="ui fluid large blue submit login button" value="Login"/>
+                </div>
+
+                if error
+                    <div class="ui negative message">#{error}</div>
+                
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
