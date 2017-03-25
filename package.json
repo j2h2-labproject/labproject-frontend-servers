@@ -21,6 +21,7 @@
     "del": "^2.2.2",
     "express": "^4.14.1",
     "extend": "^3.0.0",
+    "fabric-browserify": "^1.4.13",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-chmod": "^2.0.0",
     "gulp-clean-css": "^3.0.3",

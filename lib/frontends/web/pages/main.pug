@@ -1,3 +1,4 @@
+//- This is the main menu page. It uses main.js
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,7 @@
     include includes/includes.pug
 </head>
 <body>
-    //- include includes/header.pug
-
+    
     <main>
         <main-header></main-header>
         <div class="ui grid raised segment">
@@ -15,7 +15,7 @@
                     <a class="item">
                         <i class="plus icon"></i>New Lab
                     </a>
-                    <a class="item">
+                    <a class="item" v-on:click="open_open_lab_modal">
                         <i class="archive icon"></i>Open Lab
                     </a>
                     <a class="item" href="/admin">
@@ -37,24 +37,14 @@
                         <h2>Recent Labs</h2>
                     </div>
                     <div class="ui loading secondary segment">
-
-                    </div>
-                </div>
-                <div class="ui segments" id="other-labs" data-content="This shows all currently running labs">
-                    <div class="ui segment blue inverted">
-                        <h2>All Running Labs</h2>
-                    </div>
-                    <div class="ui loading secondary segment">
-
+                        <lab-list v-bind:labs="labs"></lab-list>
                     </div>
                 </div>
             </div>
         </div>
-
+        <open-lab-modal v-bind:is_open="open_lab_model_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
     </main>
 
-
-    
     <script src="static/js/main.js"></script>
 </body>
 </html>

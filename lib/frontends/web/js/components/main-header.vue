@@ -7,7 +7,7 @@
                 <i class="user icon"></i>
                 <div class="menu">
                     <a class="item"><i class="user circle icon"></i>Profile</a>
-                    <a class="item"><i class="sign out icon"></i>Sign Out</a>
+                    <a class="item" href="/logout"><i class="sign out icon"></i>Sign Out</a>
                 </div>
             </div>
         </div>

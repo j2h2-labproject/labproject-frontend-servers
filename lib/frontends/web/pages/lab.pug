@@ -1,0 +1,21 @@
+//- This is the lab view page. It uses lab.js
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab View - LabProject</title>
+    include includes/includes.pug
+</head>
+<body>
+    
+    <main>
+        <main-header></main-header>
+        <div id="diagram-viewport">
+            <canvas id="diagram-display"></canvas>
+        </div>
+        <status-bar></status-bar>
+        <open-lab-modal v-bind:is_open="open_lab_model_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
+    </main>
+
+    <script src="static/js/lab.js"></script>
+</body>
+</html>
