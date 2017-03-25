@@ -1,6 +1,6 @@
 <template>
 
-    <header class="ui inverted top menu" id="main-header">
+    <header class="ui inverted top fixed menu" id="main-header">
         <a id="logo" class="item" href="/main" >LabProject</a>
         <div class="right menu">
             <div class="ui dropdown item" id="main-header-dropdown">

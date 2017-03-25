@@ -1,0 +1,3 @@
+node_modules/*
+coverage/*
+lib/frontends/web/static/semantic/*
