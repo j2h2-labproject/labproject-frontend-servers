@@ -9,6 +9,7 @@
     
     <main>
         <main-header></main-header>
+        <page-notice v-bind:is_visible="is_notice_visible" v-bind:message_contents="notice_contents" v-bind:display_class="notice_class"></page-notice>
         <div id="diagram-viewport">
             <canvas id="diagram-display"></canvas>
         </div>
