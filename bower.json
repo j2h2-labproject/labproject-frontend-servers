@@ -1,0 +1,22 @@
+{
+  "name": "labproject-frontend-server",
+  "description": "Frontend server(s) for LabProject",
+  "main": "frontend-server.js",
+  "authors": [
+    "Jacob Hartman"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/j2h2-labproject/labproject-frontend-servers",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "fabric.js": "fabric#^1.7.9"
+  }
+}
