@@ -16,7 +16,6 @@ module.exports = {
     watch: {
         is_visible: function(new_value) {
             var self = this;
-            console.log("notice got", new_value)
             if (new_value === true) {
                 $('#page-notice.message').transition('fade up');
             } else {

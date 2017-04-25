@@ -5,6 +5,7 @@
     <title>Lab View - LabProject</title>
     include includes/includes.pug
     <script src="static/js/fabric.js/dist/fabric.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/lab.css">
 </head>
 <body>
     
@@ -13,6 +14,20 @@
         <page-notice v-bind:is_visible="notice.is_visible" v-bind:message_contents="notice.contents" v-bind:display_class="notice.class"></page-notice>
         <div id="diagram-viewport">
             <canvas id="diagram-display"></canvas>
+            <div id="diagram-context-menu" class="ui vertical menu">
+                <a class="c-configure item">
+                    <i class="play icon"></i> Start
+                </a>
+                <a class="c-configure item">
+                    <i class="edit icon"></i> Edit
+                </a>
+                <a class="c-add-connection item">
+                    <i class="terminal icon"></i> Console
+                </a>
+                <a class="c-remove item">
+                    <i class="remove icon"></i> Remove
+                </a>
+            </div>
         </div>
         <status-bar></status-bar>
         <open-lab-modal v-bind:is_open="modal.is_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
