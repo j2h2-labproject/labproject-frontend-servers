@@ -29,7 +29,7 @@
                 </a>
             </div>
         </div>
-        <status-bar></status-bar>
+        <status-bar v-on:menuAdd="" v-on:menuSettings="" v-on:menuState="" v-on:chatClick="" v-bind:labState="lab.state" v-bind:labInfo="lab.lab_info"></status-bar>
         <open-lab-modal v-bind:is_open="modal.is_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
     </main>
 

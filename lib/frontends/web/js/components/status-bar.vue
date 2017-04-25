@@ -73,6 +73,10 @@
                     <i class="upload icon"></i>
                     Open
                 </a>
+                <a class="item">
+                    <i class="clone icon"></i>
+                    Clone
+                </a>
             </div>
         </div>
 
