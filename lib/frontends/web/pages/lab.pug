@@ -14,22 +14,9 @@
         <page-notice v-bind:is_visible="notice.is_visible" v-bind:message_contents="notice.contents" v-bind:display_class="notice.class"></page-notice>
         <div id="diagram-viewport">
             <canvas id="diagram-display"></canvas>
-            <div id="diagram-context-menu" class="ui vertical menu">
-                <a class="c-configure item">
-                    <i class="play icon"></i> Start
-                </a>
-                <a class="c-configure item">
-                    <i class="edit icon"></i> Edit
-                </a>
-                <a class="c-add-connection item">
-                    <i class="terminal icon"></i> Console
-                </a>
-                <a class="c-remove item">
-                    <i class="remove icon"></i> Remove
-                </a>
-            </div>
+            <lab-context-menu v-bind:lab="lab" v-bind:diagram="diagram" v-bind:menu-data="contextmenu"></lab-context-menu>
         </div>
-        <status-bar v-on:menuAdd="" v-on:menuSettings="" v-on:menuState="" v-on:chatClick="" v-bind:labState="lab.state" v-bind:labInfo="lab.lab_info"></status-bar>
+        <status-bar v-bind:lab="lab" v-bind:diagram="diagram"></status-bar>
         <open-lab-modal v-bind:is_open="modal.is_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
     </main>
 

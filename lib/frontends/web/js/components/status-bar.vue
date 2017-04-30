@@ -11,7 +11,7 @@
                     <i class="desktop icon"></i>
                     Virtual Machine
                 </a>
-                <a class="item">
+                <a id="add-switch-item" class="item">
                     <i class="sitemap icon"></i>
                     Switch
                 </a>
@@ -56,7 +56,7 @@
         </a>
         <div class="ui flowing popup bottom left transition hidden">
             <div class="ui secondary vertical menu">
-                <div class="header item">State</div>
+                <div class="header item">Lab State</div>
                 <a class="item">
                     <i class="stop icon"></i>
                     Stop
@@ -81,11 +81,36 @@
         </div>
 
         <div class="right menu">
-            <a class="statemenu item">
+            <a class="infopopup item">
                 <i class="info icon"></i>
             </a>
+            <div class="ui flowing popup bottom left transition hidden">
+                <div class="ui list">
+                    <div class="item">
+                        <i class="book icon"></i>
+                        <div class="content">
+                            <div class="header">Name</div>
+                            {{lab.info.name}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="user icon"></i>
+                        <div class="content">
+                            <div class="header">Owner</div>
+                            {{lab.info.owner}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="tags icon"></i>
+                        <div class="content">
+                            <div class="header">Tags</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="ui item">
-                Status: Running
+                Status: {{lab.state}}
             </div>
             <a class="ui item">
                 <i class="comment icon"></i>
@@ -97,6 +122,7 @@
 
 <script>
 module.exports = {
+    props: ['diagram', 'lab'],
     mounted: function() {
         $('#status-bar.menu .addmenu').popup({
             inline     : true,
@@ -113,6 +139,42 @@ module.exports = {
             hoverable  : true,
             position   : 'top left',
         });
+        $('#status-bar.menu .infopopup').popup({
+            inline     : true,
+            hoverable  : true,
+            position   : 'top right',
+        });
+    },
+    watch: {
+        labState: function(new_value) {
+            var self = this;
+
+            console.log("state:", new_value)
+        },
+        diagram: function(new_value) {
+            var self = this;
+            console.log("New diagram", new_value)
+
+            if (new_value !== null) {
+
+                $("#add-switch-item").click(function() {
+                    self.diagram.enableAddMode(function(event, callback){
+                        console.log(event.e);
+                        self.diagram.add_switch("Test", "blaa", event.e.clientX, event.e.clientY, function(error, result) {
+                            callback(null, true);
+                        });
+                        
+                    });
+                });
+
+
+                self.diagram.add_desktop("Desktop 1", "desktop-1", 150, 250, function(error, result) {
+
+                });
+            }
+            
+
+        }
     },
     name: "status-bar"
 };
