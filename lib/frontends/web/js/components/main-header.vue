@@ -6,7 +6,8 @@
             <div class="ui dropdown item" id="main-header-dropdown">
                 <i class="user icon"></i>
                 <div class="menu">
-                    <a class="item"><i class="user circle icon"></i>Profile</a>
+                    <a class="item" href="/admin"><i class="setting icon"></i>Settings</a>
+                    <a class="item"><i class="help circle icon"></i>Help</a>
                     <a class="item" href="/logout"><i class="sign out icon"></i>Sign Out</a>
                 </div>
             </div>

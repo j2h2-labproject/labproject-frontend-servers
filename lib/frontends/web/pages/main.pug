@@ -12,7 +12,7 @@
         <div class="ui grid raised segment">
             <div class="four wide column">
                 <div class="ui vertical fluid menu">
-                    <a class="item">
+                    <a class="item" v-on:click="open_new_lab_modal">
                         <i class="plus icon"></i>New Lab
                     </a>
                     <a class="item" v-on:click="open_open_lab_modal">
@@ -43,6 +43,7 @@
             </div>
         </div>
         <open-lab-modal v-bind:is_open="open_lab_model_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
+        <new-lab-modal v-bind:is-open="new_lab_modal_visible" v-on:modal-close="close_new_lab_modal"></new-lab-modal>
     </main>
 
     <script src="static/js/main.js"></script>

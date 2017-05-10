@@ -2,9 +2,7 @@
     <div id="open-lab-modal" class="ui modal">
         <div class="header">Open Lab</div>
         <div class="content">
-            <p></p>
-            <p></p>
-            <p></p>
+            <lab-list v-bind:labs="labs"></lab-list>
         </div>
         <div class="actions">
             <div class="ui approve button">Open</div>

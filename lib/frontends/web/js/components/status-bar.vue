@@ -7,7 +7,7 @@
         <div class="ui flowing popup bottom left transition hidden">
             <div class="ui secondary vertical menu">
                 <div class="header item">Add</div>
-                <a class="item">
+                <a id="add-vm-item" class="item">
                     <i class="desktop icon"></i>
                     Virtual Machine
                 </a>
@@ -15,7 +15,7 @@
                     <i class="sitemap icon"></i>
                     Switch
                 </a>
-                <a class="item">
+                <a id="add-connection-item" class="item">
                     <i class="plug icon"></i>
                     Patch Cable
                 </a>
@@ -156,8 +156,18 @@ module.exports = {
             console.log("New diagram", new_value)
 
             if (new_value !== null) {
-
                 $("#add-switch-item").click(function() {
+                    $('#status-bar.menu .addmenu').popup('hide');
+                    self.diagram.enableAddMode(function(event, callback){
+                        console.log(event.e);
+                        self.diagram.add_switch("Test", "blaa", event.e.clientX, event.e.clientY, function(error, result) {
+                            callback(null, true);
+                        });
+                        
+                    });
+                });
+                 $("#add-switch-item").click(function() {
+                    $('#status-bar.menu .addmenu').popup('hide');
                     self.diagram.enableAddMode(function(event, callback){
                         console.log(event.e);
                         self.diagram.add_switch("Test", "blaa", event.e.clientX, event.e.clientY, function(error, result) {
@@ -167,10 +177,6 @@ module.exports = {
                     });
                 });
 
-
-                self.diagram.add_desktop("Desktop 1", "desktop-1", 150, 250, function(error, result) {
-
-                });
             }
             
 
