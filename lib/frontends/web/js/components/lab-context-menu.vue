@@ -1,7 +1,7 @@
 <template>
 
     <div id="lab-context-menu" class="ui vertical menu">
-        <a class="c-configure item">
+        <a id="start-context-item" class="c-configure item">
             <i class="play icon"></i> Start
         </a>
         <a class="c-configure item">
@@ -13,14 +13,29 @@
         <a class="c-remove item">
             <i class="remove icon"></i> Remove
         </a>
+        <confirm-modal v-bind:is-open="modal.is_visible" v-bind:message="modal.message" v-bind:title="modal.title" v-on:modal-close="modal.on_close"></confirm-modal>
     </div>
-
+    
 </template>
 
 <script>
+var util = require("../lib/util");
+
 module.exports = {
-    props: ['menuData'],
+    props: ['x', 'y', 'isVisible', 'lab', 'diagram'],
+    data: function() {
+        return {
+            modal: {
+                is_visible: false,
+                message: "",
+                title: "",
+                on_close: function(){}
+            },
+            select_type: "vm"
+        };
+    },
     mounted: function() {
+        var self = this;
         $('#status-bar.menu .addmenu').popup({
             inline     : true,
             hoverable  : true,
@@ -41,23 +56,43 @@ module.exports = {
             hoverable  : true,
             position   : 'top right',
         });
+        $("#start-context-item").click(function(){
+            self.modal.message = "Do you want to start this device?";
+            self.modal.title = "Starting device";
+            self.modal.is_visible = true;
+            self.modal.on_close = function(result) {
+                self.modal.is_visible = false;
+                alert(result);
+            };
+            self.$emit('menu-close', true);
+        });
+         $("#remove-context-item").click(function(){
+            var selected = self.diagram.get_selected_item();
+            console.log(selected);
+            self.modal.message = "Do you want to remove this device?";
+            self.modal.title = "Removing device";
+            self.modal.is_visible = true;
+            self.modal.on_close = function(result) {
+                self.modal.is_visible = false;
+                alert(result);
+            };
+            self.$emit('menu-close', true);
+        });
     },
     watch: {
-        "menuData.locX": function(new_value) {
+        x: function(new_value) {
             $("#lab-context-menu").css('left', new_value);
         },
-        "menuData.locY": function(new_value) {
+        y: function(new_value) {
             $("#lab-context-menu").css('top', new_value);
         },
-        "menuData.is_visible": function(new_value) {
-           
+        isVisible: function(new_value) {
             if (new_value === true) {
-                console.log("showing contextmenu")
                 $("#lab-context-menu").show();
             } else {
                 $("#lab-context-menu").hide();
             }
-        }
+        },
     },
     name: "lab-context-menu"
 };

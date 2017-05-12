@@ -6,9 +6,22 @@
                 <!-- This doesn't support IME (such as Korean) input! -->
                 <div class="ui label"> 
                     Lab Name
-                    <i class="book icon"></i>
                 </div>
                 <input placeholder="Lab name" type="text" v-model="lab_name">
+            </div>
+            <div class="ui labeled input">
+                <div class="ui label"> 
+                    Visibility
+                </div>
+                <div id="visibility" class="ui selection dropdown">
+                    <input name="visibility" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Visibility</div>
+                    <div class="menu">
+                        <div class="item" data-value="private">Private</div>
+                        <div class="item" data-value="public">Public</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="actions">
@@ -21,7 +34,7 @@
 <script>
 module.exports = {
     mounted: function() {
-        
+        $('#visibility').dropdown('set selected', 'private');
     },
     data: function() {
         return {
@@ -39,13 +52,15 @@ module.exports = {
                     closable : false,
                     onDeny : function(){
                         self.$emit('modal-close', null);
+                        return false;
                     },
                     onApprove : function() {
                         self.$emit('modal-close', self.lab_name);
+                        return false;
                     }
                 }).modal('show');
             } else {
-                
+                 $('#new-lab-modal.ui.modal').modal('hide');
             }
         }
     }
