@@ -10,7 +10,7 @@
         <a class="c-add-connection item">
             <i class="terminal icon"></i> Console
         </a>
-        <a class="c-remove item">
+        <a id="remove-context-item" class="c-remove item">
             <i class="remove icon"></i> Remove
         </a>
         <confirm-modal v-bind:is-open="modal.is_visible" v-bind:message="modal.message" v-bind:title="modal.title" v-on:modal-close="modal.on_close"></confirm-modal>
@@ -74,7 +74,11 @@ module.exports = {
             self.modal.is_visible = true;
             self.modal.on_close = function(result) {
                 self.modal.is_visible = false;
-                alert(result);
+                if (result === true) {
+                    self.diagram.remove_selected_item();
+                } else {
+
+                }
             };
             self.$emit('menu-close', true);
         });

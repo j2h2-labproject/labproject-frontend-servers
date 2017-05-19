@@ -1,3 +1,9 @@
+<style>
+    #message-input {
+        width: 350px;
+    }
+</style>
+
 <template>
 
     <div id="status-bar" class="ui bottom fixed menu">
@@ -81,7 +87,7 @@
         </div>
 
         <div class="right menu">
-            <a class="infopopup item">
+            <a class="infopopup ui item">
                 <i class="info icon"></i>
             </a>
             <div class="ui flowing popup bottom left transition hidden">
@@ -112,9 +118,19 @@
             <div class="ui item">
                 Status: {{lab.state}}
             </div>
-            <a class="ui item">
+            <a class="chatpopup ui item" data-variation="wide">
                 <i class="comment icon"></i>
             </a>
+            <div class="ui flowing popup bottom left transition hidden" >
+                <div class="ui form">
+                    <div class="field">
+                        <textarea rows="7" disabled></textarea>
+                    </div>
+                    <div class="field">
+                        <input id="message-input" placeholder="Message" type="text">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -143,6 +159,18 @@ module.exports = {
             inline     : true,
             hoverable  : true,
             position   : 'top right',
+        });
+        $('#status-bar.menu .chatpopup').popup({
+            inline     : true,
+            position   : 'top left',
+            on: 'click'
+        });
+        $('#message-input').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                console.log($('#message-input').val())
+                $('#message-input').val(""); 
+            }
         });
     },
     watch: {

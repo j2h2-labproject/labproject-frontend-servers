@@ -9,14 +9,5 @@ module.exports = {
 		}
 	],
 	vm_servers: {
-		name: "socket_io_transport",
-		hosts: [
-			{
-				name: 'test',
-				host: '127.0.0.1',
-				port: 8090,
-				clientkey: 'test'
-			}
-		]
 	}
 };

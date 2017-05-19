@@ -13,6 +13,7 @@
                 <div class="ui label"> 
                     Visibility
                 </div>
+
                 <div id="visibility" class="ui selection dropdown">
                     <input name="visibility" type="hidden">
                     <i class="dropdown icon"></i>

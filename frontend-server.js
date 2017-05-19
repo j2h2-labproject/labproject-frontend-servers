@@ -20,4 +20,6 @@ startup.start(config, function(err, netdata, server) {
 		logger.log("warning", "Server has stopped with an error", function(){})
 	}
 	
+}, function() {
+	
 }); 

@@ -1,5 +1,4 @@
 node_modules/*
 coverage/*
-lib/frontends/web/static/semantic/*
 lib/frontends/web/static/js/fabric.js/*
 lib/frontends/web/static/js/jquery/*
