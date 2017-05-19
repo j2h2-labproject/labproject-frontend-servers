@@ -4,11 +4,40 @@ The frontend server is the component that users will interact with. It communica
 
 ## Installation
 
-TODO
+Current installation:
+
+1. Install bower
+
+```
+npm install -g bower
+```
+
+2. Clone repo
+
+```
+git clone https://github.com/j2h2-labproject/labproject-frontend-servers.git
+```
+
+3. Install submodule
+
+```
+git submodule init
+git submodule update
+cd lib/common
+npm install
+cd ../..
+```
+
+4. Install dependencies
+```
+npm install
+bower install
+```
+
 
 ## Usage
 
-TODO
+Frontend server can be run with `node frontend-server.js`. Config is in `config.js`.
 
 ## Contributing
 
