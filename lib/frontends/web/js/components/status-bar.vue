@@ -138,8 +138,9 @@
 
 <script>
 module.exports = {
-    props: ['diagram', 'lab'],
+    props: ['diagram', 'lab', 'messaging'],
     mounted: function() {
+        var self = this;
         $('#status-bar.menu .addmenu').popup({
             inline     : true,
             hoverable  : true,
@@ -166,10 +167,10 @@ module.exports = {
             on: 'click'
         });
         $('#message-input').keyup(function(e){
-            if(e.keyCode == 13)
-            {
-                console.log($('#message-input').val())
-                $('#message-input').val(""); 
+            if(e.keyCode == 13) {
+                self.messaging.send_message($('#message-input').val(), function(){
+                    $('#message-input').val(""); 
+                });
             }
         });
     },
@@ -181,7 +182,6 @@ module.exports = {
         },
         diagram: function(new_value) {
             var self = this;
-            console.log("New diagram", new_value)
 
             if (new_value !== null) {
                 $("#add-switch-item").click(function() {
@@ -191,17 +191,12 @@ module.exports = {
                         self.diagram.add_switch("Test", "blaa", event.e.clientX, event.e.clientY, function(error, result) {
                             callback(null, true);
                         });
-                        
                     });
                 });
-                 $("#add-switch-item").click(function() {
+                 $("#add-connection-item").click(function() {
                     $('#status-bar.menu .addmenu').popup('hide');
-                    self.diagram.enableAddMode(function(event, callback){
-                        console.log(event.e);
-                        self.diagram.add_switch("Test", "blaa", event.e.clientX, event.e.clientY, function(error, result) {
-                            callback(null, true);
-                        });
-                        
+                    self.diagram.enableConnectMode(function(event, callback){
+                        callback(null, true);
                     });
                 });
 

@@ -16,7 +16,7 @@
             <canvas id="diagram-display"></canvas>
             <lab-context-menu :lab="lab" :diagram="diagram" :x="contextmenu.locX" :y="contextmenu.locY" :is-visible="contextmenu.is_visible" v-on:menu-close="contextmenu.on_close"></lab-context-menu>
         </div>
-        <status-bar v-bind:lab="lab" v-bind:diagram="diagram"></status-bar>
+        <status-bar :lab="lab" :diagram="diagram" :messaging="messaging"></status-bar>
         <open-lab-modal v-bind:is_open="modal.is_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
     </main>
 
