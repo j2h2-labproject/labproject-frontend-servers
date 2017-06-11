@@ -1,5 +1,5 @@
 <template>
-    <div id="new-lab-modal" class="ui modal">
+    <div id="confirm-modal" class="ui modal">
         <div class="header">{{title}}</div>
         <div class="content">
             {{message}}
@@ -23,7 +23,7 @@ module.exports = {
             var self = this;
             console.log("modal got", new_value);
             if (new_value === true) {
-                $('#new-lab-modal.ui.modal').modal({
+                $('#confirm-modal.ui.modal').modal({
                     closable : false,
                     onDeny : function(){
                         self.$emit('modal-close', false);
@@ -35,7 +35,7 @@ module.exports = {
                     }
                 }).modal('show');
             } else {
-                $('#new-lab-modal.ui.modal').modal('hide');
+                $('#confirm-modal.ui.modal').modal('hide');
             }
         }
     }

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-var util = require("../lib/util");
+var util = require("../../lib/util");
 
 module.exports = {
     props: ['x', 'y', 'isVisible', 'lab', 'diagram'],
