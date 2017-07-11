@@ -7,10 +7,10 @@
 <body>
     <main>
         <main-header></main-header>
-        <div class="ui grid raised segment">
+        <div id="manage-view" class="ui grid raised segment">
             <div class="four wide column">
                 <div class="ui vertical inverted fluid menu">
-                    <a class="item">
+                    <a class="item" id="my-profile-button">
                         <i class="child icon"></i>My Profile
                     </a>
                     <a class="item">
@@ -26,22 +26,30 @@
                         <i class="disk outline icon"></i>VM Management
                     </a>
                     <a class="item">
-                        <i class="block layout icon"></i>Lab Managment
+                        <i class="sticky note icon"></i>Lab Managment
                     </a>
                     <a class="item">
                         <i class="cubes icon"></i>Server Managment
                     </a>
+                    <a class="item" id="about-button">
+                        <i class="info icon"></i>About
+                    </a>
                 </div>
             </div>
             <div class="twelve wide column"> 
-                <div class="ui segments" id="recent-labs">
-                    <div class="ui segment blue inverted">
-                        <h2>My Profile</h2>
-                    </div>
-                    <div class="ui loading secondary segment">
 
-                    </div>
+                <div v-if="active == 'profile'">
+                     <profile-view :user-client="user_client" :active="active == 'profile'"></profile-view>
                 </div>
+                <div v-else-if="active == 'about'">
+                    <about :active="active == 'about'"></about>
+                </div>
+                <div v-else>hi
+                    
+                </div>
+
+                
+                
             </div>
         </div>
     </main>
