@@ -6,141 +6,141 @@ var should = require("should");
 
 describe('group_manager:', function(){
 
-	describe('add groups', function(){
+    describe('add groups', function(){
 
-		it('should create a group', function(done){
-			group_manager.new_group('test', function(error, result) {
-				(error === null).should.equal(true);
-				(result === null).should.equal(false);
-				done();
-			});
-		});
+        it('should create a group', function(done){
+            group_manager.new_group('test', function(error, result) {
+                (error === null).should.equal(true);
+                (result === null).should.equal(false);
+                done();
+            });
+        });
 
-		it('should fail to create a duplicate group', function(done){
-			group_manager.new_group('test', function(error, result) {
-				(error === null).should.equal(false);
-				error.message.should.equal('Group insert failed');
-				done();
-			});
-		});
+        it('should fail to create a duplicate group', function(done){
+            group_manager.new_group('test', function(error, result) {
+                (error === null).should.equal(false);
+                error.message.should.equal('Group insert failed');
+                done();
+            });
+        });
 
-	});
+    });
 
-	describe('get group object', function(){
+    describe('get group object', function(){
 
-		it('should get group object', function(done){
+        it('should get group object', function(done){
 
-			group_manager.get_group('test', function(error, result) {
-				(error === null).should.be.true;
-				(result === null).should.be.false;
-				result.is_admin('test').should.equal(false);
-				done();
-			});
+            group_manager.get_group('test', function(error, result) {
+                (error === null).should.be.true;
+                (result === null).should.be.false;
+                result.is_admin('test').should.equal(false);
+                done();
+            });
 
-		});
+        });
 
-		it('should get group object and save data', function(done){
+        it('should get group object and save data', function(done){
 
-			group_manager.get_group('test', function(error, result) {
-				(error === null).should.be.true;
-				(result === null).should.be.false;
-				result.add_admin('test');
-				result.is_admin('test').should.equal(true);
-				result.add_member('bob');
-				result.is_member('bob').should.equal(true);
-				result.in_group('test').should.equal(true);
-				result.in_group('bob').should.equal(true);
-				result.save(function(s_error, result) {
-					(s_error === null).should.be.true;
-					result.should.equal(true);
-					done();
-				});
-				;
-			});
+            group_manager.get_group('test', function(error, result) {
+                (error === null).should.be.true;
+                (result === null).should.be.false;
+                result.add_admin('test');
+                result.is_admin('test').should.equal(true);
+                result.add_member('bob');
+                result.is_member('bob').should.equal(true);
+                result.in_group('test').should.equal(true);
+                result.in_group('bob').should.equal(true);
+                result.save(function(s_error, result) {
+                    (s_error === null).should.be.true;
+                    result.should.equal(true);
+                    done();
+                });
+                ;
+            });
 
-		});
+        });
 
-		it('should get group object with new data', function(done){
+        it('should get group object with new data', function(done){
 
-			group_manager.get_group('test', function(error, result) {
-				(error === null).should.be.true;
-				(result === null).should.be.false;
-				result.is_admin('test').should.equal(true);
-				result.is_member('bob').should.equal(true);
-				done();
-			});
+            group_manager.get_group('test', function(error, result) {
+                (error === null).should.be.true;
+                (result === null).should.be.false;
+                result.is_admin('test').should.equal(true);
+                result.is_member('bob').should.equal(true);
+                done();
+            });
 
-		});
+        });
 
-	});
+    });
 
-	describe('get user membership', function(){
+    describe('get user membership', function(){
 
-			it('get membership (test)', function(done){
+            it('get membership (test)', function(done){
 
-				group_manager.get_user_groups('test', function(error, result) {
-					(error === null).should.equal(true);
-					result.indexOf('test').should.not.equal(-1);
-					done();
-				});
+                group_manager.get_user_groups('test', function(error, result) {
+                    (error === null).should.equal(true);
+                    result.indexOf('test').should.not.equal(-1);
+                    done();
+                });
 
-			});
+            });
 
-		});
+        });
 
-	describe('remove group memberships', function(){
-		it('Remove users from membership', function(done){
+    describe('remove group memberships', function(){
+        it('Remove users from membership', function(done){
 
-			group_manager.get_group('test', function(error, result) {
-				(error === null).should.be.true;
-				(result === null).should.be.false;
-				result.is_admin('test').should.equal(true);
-				result.is_member('bob').should.equal(true);
-				result.add_member('bob');
-				result.add_admin('test');
-				result.remove_member('bob');
-				result.remove_admin('test');
-				result.remove_member('nope');
-				result.save(function(s_error, result) {
-					(s_error === null).should.be.true;
-					result.should.equal(true);
-					done();
-				});
+            group_manager.get_group('test', function(error, result) {
+                (error === null).should.be.true;
+                (result === null).should.be.false;
+                result.is_admin('test').should.equal(true);
+                result.is_member('bob').should.equal(true);
+                result.add_member('bob');
+                result.add_admin('test');
+                result.remove_member('bob');
+                result.remove_admin('test');
+                result.remove_member('nope');
+                result.save(function(s_error, result) {
+                    (s_error === null).should.be.true;
+                    result.should.equal(true);
+                    done();
+                });
 
-			});
+            });
 
-		});
-
-
-		it('check membership has been removed', function(done){
-
-			group_manager.get_group('test', function(error, result) {
-				(error === null).should.be.true;
-				(result === null).should.be.false;
-				result.is_admin('test').should.equal(false);
-				result.is_member('bob').should.equal(false);
-				done();
-			});
-
-		});
-
-	});
+        });
 
 
+        it('check membership has been removed', function(done){
 
-	describe('delete group', function(){
+            group_manager.get_group('test', function(error, result) {
+                (error === null).should.be.true;
+                (result === null).should.be.false;
+                result.is_admin('test').should.equal(false);
+                result.is_member('bob').should.equal(false);
+                done();
+            });
 
-		it('delete group', function(done){
+        });
 
-			group_manager.delete_group('test', function(error, result) {
-				(error === null).should.be.true;
-				result.should.equal(true);
-				done();
-			});
+    });
 
-		});
 
-	});
+
+    describe('delete group', function(){
+
+        it('delete group', function(done){
+
+            group_manager.delete_group('test', function(error, result) {
+                (error === null).should.be.true;
+                result.should.equal(true);
+                done();
+            });
+
+        });
+
+    });
 
 
 });

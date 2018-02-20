@@ -10,18 +10,18 @@ describe('lab_controller: ', function(){
   var sessions;
   var lab_id_1;
 
-	before(function(done) {
+    before(function(done) {
     test_helper.generate_environment(function(result) {
       sessions = result;
       done();
     });
-	});
+    });
 
-	after(function(done) {
+    after(function(done) {
     test_helper.destroy_environment(function() {
       done();
     });
-	});
+    });
 
 
   describe('create_lab: ', function() {
@@ -35,9 +35,9 @@ describe('lab_controller: ', function(){
         done();
       });
 
-		});
+        });
 
-		it('should create lab for regular2', function(done){
+        it('should create lab for regular2', function(done){
 
       lab_controller.create_lab(sessions['regular2'], "regular2_test_lab", function(error, data) {
         console.log(error);
@@ -48,12 +48,12 @@ describe('lab_controller: ', function(){
         done();
       });
 
-		});
-	});
+        });
+    });
 
-	describe('list_labs: ', function() {
+    describe('list_labs: ', function() {
 
-		it('should list no labs for user regular1', function(done){
+        it('should list no labs for user regular1', function(done){
 
       lab_controller.list_labs(sessions['regular1'], function(error, data) {
         (error === null).should.equal(true);
@@ -62,7 +62,7 @@ describe('lab_controller: ', function(){
         done();
       });
 
-		});
+        });
 
     it('should list a lab for user regular2', function(done){
 
@@ -75,7 +75,7 @@ describe('lab_controller: ', function(){
 
     });
 
-	});
+    });
 
   describe('delete_lab: ', function() {
 

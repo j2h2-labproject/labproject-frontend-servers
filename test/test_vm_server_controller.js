@@ -27,17 +27,17 @@ describe('vm_server_controller:', function(){
         done();
       });
     });
-	});
+    });
 
-	after(function(done) {
+    after(function(done) {
     test_helper.destroy_environment(function() {
       done();
     });
-	});
+    });
 
-	describe('list vm servers: ', function(){
+    describe('list vm servers: ', function(){
 
-		it('should allow superuser and users with admin_servers ability to list vm servers', function(done) {
+        it('should allow superuser and users with admin_servers ability to list vm servers', function(done) {
       foreach(expected_success, function(loc, controller, pass_data, next) {
           var username = expected_success[loc];
           vm_server_controller.list_servers(sessions[username], function(error, server_list) {
@@ -49,7 +49,7 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
+        });
 
     it('should not allow any other users to list vm servers', function(done) {
       foreach(expected_fail, function(loc, controller, pass_data, next) {
@@ -62,8 +62,8 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
-	});
+        });
+    });
 
   describe('list vm server status: ', function() {
     it('should allow superuser and users with admin_servers ability to get vm server info', function(done) {
@@ -80,7 +80,7 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
+        });
 
     it('should not allow any other user to get vm server info', function(done) {
       foreach(expected_fail, function(loc, controller, pass_data, next) {
@@ -95,9 +95,9 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
+        });
 
-	});
+    });
 
   describe('list vm server info: ', function(){
 
@@ -112,7 +112,7 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
+        });
 
     it('should not allow any other user to get vm server status', function(done) {
       foreach(expected_fail, function(loc, controller, pass_data, next) {
@@ -127,9 +127,9 @@ describe('vm_server_controller:', function(){
       }, function(error, status) {
           done();
       })
-		});
+        });
 
-	});
+    });
 
 
 

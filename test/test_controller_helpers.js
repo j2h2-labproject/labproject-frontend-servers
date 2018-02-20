@@ -12,10 +12,10 @@ describe('controller_helpers:', function(){
 
   var session_id = null;
 
-	before(function(done) {
-		user_manager.new_user("test", "test3", function(error, result) {
+    before(function(done) {
+        user_manager.new_user("test", "test3", function(error, result) {
       console.log(error);
-			(error === null).should.equal(true);
+            (error === null).should.equal(true);
       group_manager.new_group("group", function(g_error, group) {
         group.add_member("test");
         group.save(function(error, result) {
@@ -37,10 +37,10 @@ describe('controller_helpers:', function(){
           });
         });
       });
-		});
-	});
+        });
+    });
 
-	after(function(done) {
+    after(function(done) {
     session_manager.delete_password_session(session_id, function(error, result) {
       (error === null).should.equal(true);
       permissions_manager.delete_permissions("test", function(p_error, result) {
@@ -55,12 +55,12 @@ describe('controller_helpers:', function(){
       });
     });
 
-	});
+    });
 
 
-	describe('get session data: ', function() {
+    describe('get session data: ', function() {
 
-		it('get session data', function(done){
+        it('get session data', function(done){
 
       controller_helpers.get_user_data(session_id, function(error, user, groups, permissions, session) {
         (error === null).should.equal(true);
@@ -71,10 +71,10 @@ describe('controller_helpers:', function(){
         done();
       });
 
-		});
+        });
 
 
 
-	});
+    });
 
 });

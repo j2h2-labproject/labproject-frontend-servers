@@ -23,10 +23,10 @@ describe('vm_server_manager:', function(){
     });
   });
 
-	describe('list vm servers: ', function(){
-		it('should list vm servers', function(done){
+    describe('list vm servers: ', function(){
+        it('should list vm servers', function(done){
 
-			vm_server_manager.list_servers(function(error, server_list) {
+            vm_server_manager.list_servers(function(error, server_list) {
         (error === null).should.equal(true);
         (server_list.length >= 1).should.equal(true);
         console.log(server_list);
@@ -34,13 +34,13 @@ describe('vm_server_manager:', function(){
         done();
       });
 
-		});
-	});
+        });
+    });
 
   describe('vm servers maintenance mode: ', function(){
-		it('should create/check for maintenance mode', function(done){
+        it('should create/check for maintenance mode', function(done){
 
-		  vm_server_manager.get_server(server, function(error, server_obj) {
+          vm_server_manager.get_server(server, function(error, server_obj) {
         (error === null).should.equal(true);
         server_obj.reboot_maintenance_network(function(error, result) {
           (error === null).should.equal(true);
@@ -49,12 +49,12 @@ describe('vm_server_manager:', function(){
         
       });
 
-		});
-	});
+        });
+    });
 
   describe('get vm server info', function(){
-		it('should get vm server status', function(done){
-			vm_server_manager.get_server(server, function(error, server_obj) {
+        it('should get vm server status', function(done){
+            vm_server_manager.get_server(server, function(error, server_obj) {
         (error === null).should.equal(true);
         server_obj.get_status(function(error, result) {
           (error === null).should.equal(true);
@@ -64,10 +64,10 @@ describe('vm_server_manager:', function(){
         });
         
       });
-		});
+        });
 
     it('should get vm server info', function(done){
-			vm_server_manager.get_server(server, function(error, server_obj) {
+            vm_server_manager.get_server(server, function(error, server_obj) {
         (error === null).should.equal(true);
         server_obj.get_info(function(error, result) {
           (error === null).should.equal(true);
@@ -76,8 +76,8 @@ describe('vm_server_manager:', function(){
           done();
         });
       });
-		});
-	});
+        });
+    });
 
 
 
