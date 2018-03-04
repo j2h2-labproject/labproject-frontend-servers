@@ -1,3 +1,4 @@
+
 [submodule "lib/common"]
-    path = lib/common
-    ursl = https://github.com/j2h2-labproject/labproject-common
+	path = lib/common
+	url = https://github.com/j2h2-labproject/labproject-common
