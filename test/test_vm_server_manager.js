@@ -13,42 +13,38 @@ var should = require("should");
 
 describe('vm_server_manager:', function(){
 
-  var server = null;
+    var server = null;
 
-  before(function(done) {
-    host_item = config.vm_servers.hosts[0];
-    socket_io_transport.connect_clients(test_logger, config.vm_servers.hosts, function(error, vm_server_client) {
-      vm_server_manager.initialize(vm_server_client);
-      done();
+    before(function(done) {
+        host_item = config.vm_servers.hosts[0];
+        socket_io_transport.connect_clients(test_logger, config.vm_servers.hosts, function(error, vm_server_client) {
+            vm_server_manager.initialize(vm_server_client);
+            done();
+        });
     });
-  });
 
     describe('list vm servers: ', function(){
         it('should list vm servers', function(done){
-
             vm_server_manager.list_servers(function(error, server_list) {
-        (error === null).should.equal(true);
-        (server_list.length >= 1).should.equal(true);
-        console.log(server_list);
-        server = server_list[0];
-        done();
-      });
-
+                (error === null).should.equal(true);
+                (server_list.length >= 1).should.equal(true);
+                console.log(server_list);
+                server = server_list[0];
+                done();
+            });
         });
     });
 
-  describe('vm servers maintenance mode: ', function(){
-        it('should create/check for maintenance mode', function(done){
-
-          vm_server_manager.get_server(server, function(error, server_obj) {
-        (error === null).should.equal(true);
-        server_obj.reboot_maintenance_network(function(error, result) {
-          (error === null).should.equal(true);
-          done();
-        });
-        
-      });
-
+    describe('vm servers maintenance mode: ', function(){
+        it('should verify maintenance switch', function(done){
+            vm_server_manager.get_server(server, function(error, server_obj) {
+                (error === null).should.equal(true);
+                server_obj.verify_maintenance(function(error, result) {
+                    (error === null).should.equal(true);
+                    (result == true || result == false).should.equal(true);
+                    done();
+                });
+            });
         });
     });
 

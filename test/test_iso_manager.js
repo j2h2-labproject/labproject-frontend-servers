@@ -79,6 +79,16 @@ describe('iso_manager:', function(){
                 (result === null).should.be.false;
                 result.set_owner(test_owner);
                 result.get_owner().should.equal(test_owner);
+
+                result.get_tags().length.should.equal(0);
+                result.add_tag("test_tag");
+                result.get_tags().length.should.equal(1);
+                result.add_tag("tinycore_test");
+                result.get_tags().length.should.equal(2);
+                result.remove_tag("test_tag");
+                result.get_tags().length.should.equal(1);
+                result.add_tag("test_tag");
+
                 result.save(function(s_error, result) {
                     (s_error === null).should.equal(true);
                     result.should.equal(true);
@@ -92,6 +102,33 @@ describe('iso_manager:', function(){
                 (error === null).should.equal(true);
                 (result === null).should.equal(false);
                 result.get_owner().should.equal(test_owner);
+                done();
+            });
+        });
+
+        it('should list isos', function(done){
+            iso_manager.list_isos(function(error, iso_list) {
+                (error === null).should.equal(true);
+                (iso_list === null).should.equal(false);
+                iso_list.length.should.equal(1);
+                done();
+            });
+        });
+
+        it('should list iso by tag', function(done){
+            iso_manager.list_isos_by_tags(['tinycore_test', "test_tag"], function(error, iso_list) {
+                (error === null).should.equal(true);
+                (iso_list === null).should.equal(false);
+                iso_list.length.should.equal(1);
+                done();
+            });
+        });
+
+        it('should not get list of isos by nonexistant tag', function(done){
+            iso_manager.list_isos_by_tags(['nope'], function(error, iso_list) {
+                (error === null).should.equal(true);
+                (iso_list === null).should.equal(false);
+                iso_list.length.should.equal(0);
                 done();
             });
         });
@@ -113,7 +150,7 @@ describe('iso_manager:', function(){
     describe('list isos', function(){
 
         it('get a list of isos', function(done){
-            iso_manager.list_available_isos(function(error, results) {
+            iso_manager.list_isos(function(error, results) {
                 (error === null).should.equal(true);
                 (results.length > 0).should.equal(true);
                 var found = false;
