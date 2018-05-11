@@ -14,3 +14,10 @@
     text-align: center;
 }
 
+main {
+    height: 100%;
+}
+
+main > div.ui {
+    min-height: 100%;
+}

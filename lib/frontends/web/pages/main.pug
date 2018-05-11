@@ -9,41 +9,51 @@
     
     <main>
         <main-header></main-header>
+        
         <div class="ui grid raised segment">
-            <div class="four wide column">
-                <div class="ui vertical fluid menu">
-                    <a class="item" v-on:click="open_new_lab_modal">
-                        <i class="plus icon"></i>New Lab
+            <div class="sixteen wide column">
+                <div class="ui cards">
+                    <a class="card" v-on:click="open_new_lab_modal">
+                        <div class="content">
+                            <div class="header">New Lab</div>
+                            <div class="description">Create a new lab.</div>
+                        </div>
+                        <div class="ui bottom attached button">
+                            <i class="add icon"></i> New Lab
+                        </div>
                     </a>
-                    <a class="item" v-on:click="open_open_lab_modal">
-                        <i class="archive icon"></i>Open Lab
+                    <a class="card" v-on:click="open_open_lab_modal">
+                        <div class="content">
+                            <div class="header">Open Lab</div>
+                            <div class="description">Open an existing lab.</div>
+                        </div>
+                        <div class="ui bottom attached button">
+                            <i class="folder open icon"></i> Open Lab
+                        </div>
                     </a>
-                    <a class="item" href="/admin">
-                        <i class="dashboard icon"></i>Manage
+                    <a class="card" href="/manage">
+                        <div class="content">
+                            <div class="header">Manage</div>
+                            <div class="description">Manage virtual machines, users and labs.</div>
+                        </div>
+                        <div class="ui bottom attached button">
+                            <i class="cogs icon"></i> Manage
+                        </div>
                     </a>
-                </div>
-            </div>
-            <div class="twelve wide column"> 
-                <div class="ui segments" id="messages" data-content="This shows the most recent messages addressed to you">
-                    <div class="ui segment orange inverted">
-                        <h2>Messages</h2>
-                    </div>
-                    <div class="ui loading secondary segment">
-                        <message-list v-bind:messages="messages"></message-list>
-                    </div>
-                </div>
-                <div class="ui segments" id="recent-labs"  data-content="This shows the most recent labs that you have used">
-                    <div class="ui segment blue inverted">
-                        <h2>Recent Labs</h2>
-                    </div>
-                    <div class="ui loading secondary segment">
-                        <lab-list v-bind:labs="labs"></lab-list>
-                    </div>
+                    <a class="ui card" href="/monitor">
+                        <div class="content">
+                            <div class="header">Monitor</div>
+                            <div class="description">View server resources and load.</div>
+                        </div>
+                        <div class="ui bottom attached button">
+                            <i class="chart line icon"></i> Monitor
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
         <open-lab-modal v-bind:is_open="open_lab_model_open" v-on:modal_close="close_open_lab_modal"></open-lab-modal>
-        <new-lab-modal v-bind:is-open="new_lab_modal_visible" v-on:modal-close="close_new_lab_modal"></new-lab-modal>
+        <new-lab-modal ref="new_lab_modal" labClient="lab_client"></new-lab-modal>
     </main>
 
     <script src="static/js/main.js"></script>

@@ -10,7 +10,7 @@
         <div id="manage-view" class="ui grid raised segment">
             <div class="four wide column">
                 <div class="ui vertical inverted fluid menu">
-                    <a class="item" id="my-profile-button">
+                    <a class="item" v-on:click="active = 'profile'">
                         <i class="child icon"></i>My Profile
                     </a>
                     <a class="item">
@@ -22,7 +22,7 @@
                     <a class="item">
                         <i class="checkmark icon"></i>Permissions
                     </a>
-                    <a class="item">
+                    <a class="item" v-on:click="active = 'vms'">
                         <i class="disk outline icon"></i>VM Management
                     </a>
                     <a class="item">
@@ -31,7 +31,7 @@
                     <a class="item">
                         <i class="cubes icon"></i>Server Managment
                     </a>
-                    <a class="item" id="about-button">
+                    <a class="item" v-on:click="active = 'about'">
                         <i class="info icon"></i>About
                     </a>
                 </div>
@@ -44,7 +44,10 @@
                 <div v-else-if="active == 'about'">
                     <about :active="active == 'about'"></about>
                 </div>
-                <div v-else>hi
+                <div v-else-if="active == 'vms'">
+                    <virtual-machines-view :active="active == 'vms'"></virtual-machines-view>
+                </div>
+                <div v-else>
                     
                 </div>
 

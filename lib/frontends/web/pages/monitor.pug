@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitor - LabProject</title>
+    include includes/includes.pug
+</head>
+<body>
+    <main>
+        <main-header></main-header>
+        <div id="monitor-view" class="ui grid raised segment">
+            <div class="sizteen wide column">
+                <table class="ui celled padded table">
+                    <thead>
+                        <tr>
+                            <th>Server Name</th>
+                            <th>CPU Usage</th>
+                            <th>Memory Usage</th>
+                            <th>HD Space</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="server in servers">
+                            <td> {{server.name}} </td>
+                            <td><canvas :id="server.name + '-cpu'" width="300" height="200"></canvas></td>
+                            <td><canvas :id="server.name + '-mem'" width="300" height="200"></canvas></td>
+                            <td><canvas :id="server.name + '-disk'" width="300" height="200"></canvas></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+   
+    <script src="static/js/monitor.js"></script>
+</body>
+</html>

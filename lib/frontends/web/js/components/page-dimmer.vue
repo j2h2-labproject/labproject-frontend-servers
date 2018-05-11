@@ -1,5 +1,5 @@
 <template>
-    <div id="page-dimmer"></div>
+    <div id="page-dimmer">
         <div class="ui page dimmer">
         <div class="content">
             <div class="ui text loader">Connection Lost</div>
